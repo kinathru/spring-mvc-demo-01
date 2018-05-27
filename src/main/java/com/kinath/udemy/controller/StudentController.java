@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StudentController
 {
     @RequestMapping("/showForm")
-    public String showForm( Model model)
+    public String showForm( Model model )
     {
         // Create Student
         Student student = new Student();
@@ -23,9 +23,9 @@ public class StudentController
     }
 
     @RequestMapping("/processForm")
-    public String processForm( @ModelAttribute("student")Student theStudent)
+    public String processForm( @ModelAttribute("student") Student theStudent )
     {
-        System.out.println(String.format( "Received Student is : %s %s", theStudent.getFirstName(), theStudent.getLastName() ));
+        System.out.println( String.format( "Received Student is : %s %s from %s", theStudent.getFirstName(), theStudent.getLastName(), theStudent.getCountry() ) );
         return "student-confirmation";
     }
 }

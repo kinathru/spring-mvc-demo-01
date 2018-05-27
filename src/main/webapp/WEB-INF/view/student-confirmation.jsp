@@ -6,7 +6,10 @@
 </head>
 <body>
 	Registered Student Info:<br>
-	${student.firstName} ${student.lastName}
+	${student.firstName} ${student.lastName}<br>
+	${student.country}<br>
+	${student.favouriteLanguage}<br/>
+	${student.operatingSystems}
 
 </body>
 </html>
