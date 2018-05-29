@@ -169,12 +169,6 @@
             <version>1.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
-
         <!--Hibernate Dependencies-->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -199,6 +193,14 @@
             <groupId>com.fasterxml</groupId>
             <artifactId>classmate</artifactId>
             <version>1.4.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.glassfish/javax.el -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.1-b09</version>
+            <!--<scope>provided</scope>-->
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
@@ -227,13 +229,16 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.6.5</version>
                 <configuration>
-                    <mode>context</mode>
-                    <charset>UTF-8</charset>
-                    <warDirectory>target/${project.artifactId}-${project.version}</warDirectory>
+                    <container>
+                        <containerId>tomcat8x</containerId>
+                        <zipUrlInstaller>
+                            <url>http://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.5.9/tomcat-8.5.9.zip</url>
+                        </zipUrlInstaller>
+                    </container>
                 </configuration>
             </plugin>
         </plugins>
