@@ -1,9 +1,12 @@
 package com.kinath.udemy.controller;
 
 import com.kinath.udemy.model.Customer;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,6 +16,19 @@ import javax.validation.Valid;
 @RequestMapping("/customer")
 public class CustomerController
 {
+    /**
+     * Pre processor class for advanced validation.
+     * Here it is used to parse strings with empty values.
+     *
+     * @param dataBinder
+     */
+    @InitBinder
+    public void initBinder( WebDataBinder dataBinder )
+    {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor( true );
+        dataBinder.registerCustomEditor( String.class, stringTrimmerEditor );
+    }
+
     @RequestMapping("/showForm")
     public String showForm( Model theModel )
     {
@@ -21,9 +37,10 @@ public class CustomerController
     }
 
     @RequestMapping("/processForm")
-    public String processForm( @Valid @ModelAttribute("customer")Customer customer, BindingResult bindingResult )
+    public String processForm( @Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult )
     {
-        if(bindingResult.hasErrors())
+        System.out.println( String.format( "Customer Controller - Process Form -> Last Name  : |%s|", customer.getLastName() ) );
+        if( bindingResult.hasErrors() )
         {
             return "customer-form";
         }
