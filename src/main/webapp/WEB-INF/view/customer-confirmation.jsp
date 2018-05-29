@@ -10,5 +10,6 @@
 	Registered Customer Info:<br>
 	Name : ${customer.firstName} ${customer.lastName}<br>
 	Free Passes : ${customer.freePasses}<br>
+	Postal Code : ${customer.postalCode}<br>
 </body>
 </html>
