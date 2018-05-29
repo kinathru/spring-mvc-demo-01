@@ -40,6 +40,7 @@ public class CustomerController
     public String processForm( @Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult )
     {
         System.out.println( String.format( "Customer Controller - Process Form -> Last Name  : |%s|", customer.getLastName() ) );
+        System.out.println( String.format( "Customer Controller - Process Form -> Binding Result  : |%s|", bindingResult.toString() ) );
         if( bindingResult.hasErrors() )
         {
             return "customer-form";
