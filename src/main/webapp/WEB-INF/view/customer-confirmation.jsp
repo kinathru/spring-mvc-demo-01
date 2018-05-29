@@ -8,6 +8,7 @@
 </head>
 <body>
 	Registered Customer Info:<br>
-	${customer.firstName} ${customer.lastName}<br>
+	Name : ${customer.firstName} ${customer.lastName}<br>
+	Free Passes : ${customer.freePasses}<br>
 </body>
 </html>
