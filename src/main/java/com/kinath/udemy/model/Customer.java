@@ -1,5 +1,7 @@
 package com.kinath.udemy.model;
 
+import com.kinath.udemy.annotations.CourseCode;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -21,6 +23,9 @@ public class Customer
 
     @Pattern( regexp = "^[a-zA-Z0-9]{5}", message = "Only 5 alpha numeric characters allowed")
     private String postalCode;
+
+    @CourseCode(value = "MIS", message = " code should start with MIS")
+    private String courseCode;
 
     public Customer()
     {
@@ -64,5 +69,15 @@ public class Customer
     public void setPostalCode( String postalCode )
     {
         this.postalCode = postalCode;
+    }
+
+    public String getCourseCode()
+    {
+        return courseCode;
+    }
+
+    public void setCourseCode( String courseCode )
+    {
+        this.courseCode = courseCode;
     }
 }
